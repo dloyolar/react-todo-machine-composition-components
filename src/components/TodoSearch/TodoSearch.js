@@ -1,3 +1,5 @@
+import './TodoSearch.css';
+
 export const TodoSearch = () => {
-  return <input placeholder="Onion" />;
+  return <input placeholder="Search TODOS" className="TodoSearch" />;
 };
