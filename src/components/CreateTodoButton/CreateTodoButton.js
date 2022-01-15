@@ -1,5 +1,12 @@
 import './CreateTodoButton.css';
 
 export const CreateTodoButton = () => {
-  return <button className="CreateTodoButton">+</button>;
+  const handleClick = (msg) => {
+    alert(msg);
+  };
+  return (
+    <button className="CreateTodoButton" onClick={handleClick}>
+      +
+    </button>
+  );
 };
