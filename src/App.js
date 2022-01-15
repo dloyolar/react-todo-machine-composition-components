@@ -1,23 +1,22 @@
-// import './App.css';
-
 import { useState } from 'react';
 import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton';
 import { TodoCounter } from './components/TodoCounter/TodoCounter';
 import { TodoItem } from './components/TodoItem/TodoItem';
 import { TodoList } from './components/TodoList/TodoList';
 import { TodoSearch } from './components/TodoSearch/TodoSearch';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
-const defaultTodos = [
-  { id: 1, text: 'Cut Onion', completed: false },
-  { id: 2, text: 'Cut Onion', completed: false },
-  { id: 3, text: 'Take react intro course', completed: false },
-  { id: 4, text: 'Llorar con la llorona', completed: true },
-  { id: 5, text: 'Ver spiderman de pana', completed: true },
-  { id: 6, text: 'Llorar con Endgame', completed: false },
-];
+// const defaultTodos = [
+//   { id: 1, text: 'Cut Onion', completed: false },
+//   { id: 2, text: 'Cut Onion', completed: false },
+//   { id: 3, text: 'Take react intro course', completed: false },
+//   { id: 4, text: 'Llorar con la llorona', completed: true },
+//   { id: 5, text: 'Ver spiderman de pana', completed: true },
+//   { id: 6, text: 'Llorar con Endgame', completed: false },
+// ];
 
 function App() {
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -39,14 +38,14 @@ function App() {
     const todoIndex = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (id) => {
     const todoIndex = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
