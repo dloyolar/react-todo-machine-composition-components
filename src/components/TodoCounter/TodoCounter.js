@@ -1,5 +1,9 @@
 import './TodoCounter.css';
 
-export const TodoCounter = () => {
-  return <h1 className="TodoCounter">Completed 2 of 3 TODOs</h1>;
+export const TodoCounter = ({ completed, total }) => {
+  return (
+    <h1 className="TodoCounter">
+      Completed {completed} of {total} TODOs
+    </h1>
+  );
 };
