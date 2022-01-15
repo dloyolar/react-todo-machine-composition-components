@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton';
-import { TodoCounter } from './components/TodoCounter/TodoCounter';
-import { TodoItem } from './components/TodoItem/TodoItem';
-import { TodoList } from './components/TodoList/TodoList';
-import { TodoSearch } from './components/TodoSearch/TodoSearch';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { AppUI } from './AppUI';
 
 // const defaultTodos = [
 //   { id: 1, text: 'Cut Onion', completed: false },
@@ -54,26 +50,17 @@ function App() {
   };
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList>
-        {error && <p>Error</p>}
-        {loading && <p>Loading...</p>}
-        {!loading && !searchedTodos.length && <p>Create your first TODO 👌</p>}
-
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            text={todo.text}
-            key={todo.id}
-            completed={todo.completed}
-            onComplete={() => toggleCompleteTodos(todo.id)}
-            onDelete={() => deleteTodo(todo.id)}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-    </>
+    <AppUI
+      error={error}
+      loading={loading}
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      toggleCompleteTodos={toggleCompleteTodos}
+      deleteTodo={deleteTodo}
+    />
   );
 }
 
