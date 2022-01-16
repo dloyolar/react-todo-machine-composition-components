@@ -1,9 +1,10 @@
 import './CreateTodoButton.css';
 
-export const CreateTodoButton = () => {
-  const handleClick = (msg) => {
-    alert(msg);
+export const CreateTodoButton = ({ setOpenModal }) => {
+  const handleClick = () => {
+    setOpenModal((prevState) => !prevState);
   };
+
   return (
     <button className="CreateTodoButton" onClick={handleClick}>
       +
