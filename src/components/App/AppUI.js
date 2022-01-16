@@ -1,24 +1,20 @@
+import { useContext } from 'react';
 import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
+import { TodoContext } from '../TodoContext';
 import { TodoCounter } from '../TodoCounter/TodoCounter';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { TodoList } from '../TodoList/TodoList';
 import { TodoSearch } from '../TodoSearch/TodoSearch';
 
-export const AppUI = ({
-  error,
-  loading,
-  totalTodos,
-  completedTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  toggleCompleteTodos,
-  deleteTodo,
-}) => {
+export const AppUI = () => {
+  const { error, loading, searchedTodos, toggleCompleteTodos, deleteTodo } =
+    useContext(TodoContext);
+
   return (
     <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoCounter />
+      <TodoSearch />
+
       <TodoList>
         {error && <p>Error</p>}
         {loading && <p>Loading...</p>}
@@ -34,6 +30,7 @@ export const AppUI = ({
           />
         ))}
       </TodoList>
+
       <CreateTodoButton />
     </>
   );
