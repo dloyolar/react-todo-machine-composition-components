@@ -16,7 +16,6 @@ export const TodoForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!newTodoValue) return;
     addTodo(newTodoValue);
     setOpenModal(false);
   };
