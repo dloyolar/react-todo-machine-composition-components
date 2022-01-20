@@ -6,3 +6,7 @@
   font-weight: bold;
   margin: 0;
 }
+
+.TodoCounter--loading {
+  color: #504f4f;
+}

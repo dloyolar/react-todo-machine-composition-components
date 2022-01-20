@@ -12,3 +12,8 @@
 ::placeholder {
   opacity: 0.5;
 }
+
+.TodoSearch:disabled {
+  opacity: 50%;
+  background: rgb(182, 182, 182);
+}

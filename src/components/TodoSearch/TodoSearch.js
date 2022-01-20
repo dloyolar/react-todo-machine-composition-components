@@ -1,6 +1,6 @@
 import './TodoSearch.css';
 
-export const TodoSearch = ({ searchValue, setSearchValue }) => {
+export const TodoSearch = ({ searchValue, setSearchValue, loading }) => {
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
   };
@@ -12,6 +12,7 @@ export const TodoSearch = ({ searchValue, setSearchValue }) => {
       className="TodoSearch"
       value={searchValue}
       onChange={onSearchValueChange}
+      disabled={loading}
     />
   );
 };
