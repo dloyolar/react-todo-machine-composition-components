@@ -6,10 +6,14 @@ const ChangeAlert = ({ show, toggleShow }) => {
   if (show) {
     return (
       <div className="ChangeAlert-container">
-        <p>There were changes⚠️⚠️⚠️</p>
-        <button className="ChangeAlert--button" onClick={() => toggleShow()}>
-          Update
-        </button>
+        <div className="ChangeAlert-container--box">
+          <p className="ChangeAlert-container--text">
+            There were changes⚠️⚠️⚠️
+          </p>
+          <button className="ChangeAlert--button" onClick={() => toggleShow()}>
+            Update
+          </button>
+        </div>
       </div>
     );
   } else {
