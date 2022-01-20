@@ -1,4 +1,5 @@
 import { useTodos } from '../../hooks/useTodos';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert/ChangeAlert';
 import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
 import { EmptyTodo } from '../EmptyTodo/EmptyTodo';
 import { Modal } from '../Modal/Modal';
@@ -26,6 +27,7 @@ function App() {
     totalTodos,
     completedTodos,
     addTodo,
+    sincronizeTodos,
   } = useTodos();
   return (
     <>
@@ -73,6 +75,8 @@ function App() {
         </Modal>
       )}
       <CreateTodoButton setOpenModal={setOpenModal} />
+
+      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
     </>
   );
 }
